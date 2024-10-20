@@ -10,7 +10,6 @@ const RegistrationPage = () => {
 		password: "",
 	};
 	const handelSubmit = (values, options) => {
-		console.log(values);
 		dispatch(register(values));
 		options.resetForm();
 	};
