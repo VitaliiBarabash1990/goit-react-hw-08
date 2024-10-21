@@ -1,13 +1,26 @@
 import { BsFillPersonFill } from "react-icons/bs";
 import { BsFillTelephoneFill } from "react-icons/bs";
 import s from "./Contact.module.css";
-import { useDispatch } from "react-redux";
-import { deleteContact } from "../../redux/contacts/operations";
+// import { useDispatch } from "react-redux";
+// import { deleteContact } from "../../redux/contacts/operations";
 import { motion } from "framer-motion";
 import { slideInFromBot } from "../motion/motion";
 import { MdDeleteOutline, MdOutlineModeEditOutline } from "react-icons/md";
+import useToggle from "../hooks/useToggle";
+import Modal from "../Modal/Modal";
+import DeleteContacts from "../DeleteContacts/DeleteContacts";
+import EditContacts from "../EditContacts/EditContacts";
 const Contact = ({ ...contact }) => {
-	const dispatch = useDispatch();
+	// const dispatch = useDispatch();
+
+	const {
+		isOpen,
+		isOpenDel,
+		openModal,
+		closeModal,
+		openModalDel,
+		closeModalDel,
+	} = useToggle();
 
 	return (
 		<>
@@ -27,18 +40,30 @@ const Contact = ({ ...contact }) => {
 					</div>
 				</div>
 				<div className={s.btnGroup}>
-					<button
+					{/* <button
 						className={s.btnEdit}
 						onClick={() => dispatch(deleteContact(contact.id))}
 					>
 						<MdOutlineModeEditOutline className={s.editBlack} />
+					</button> */}
+
+					<button className={s.btnEdit} onClick={openModal}>
+						<MdOutlineModeEditOutline className={s.editBlack} />
 					</button>
-					<button
-						className={s.btn}
-						onClick={() => dispatch(deleteContact(contact.id))}
-					>
+					{isOpen && (
+						<Modal onClose={closeModal}>
+							<EditContacts contact={contact} onClose={closeModal} />
+						</Modal>
+					)}
+
+					<button className={s.btn} onClick={openModalDel}>
 						<MdDeleteOutline className={s.editBlack} />
 					</button>
+					{isOpenDel && (
+						<Modal onClose={closeModalDel}>
+							<DeleteContacts id={contact.id} close={closeModalDel} />
+						</Modal>
+					)}
 				</div>
 			</motion.li>
 		</>

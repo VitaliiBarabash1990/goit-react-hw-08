@@ -39,3 +39,18 @@ export const addContact = createAsyncThunk(
 		}
 	}
 );
+
+export const updateContact = createAsyncThunk(
+	"contacts/updateContact",
+	async (value, thunkApi) => {
+		const id = value.id;
+		const body = { name: value.name, number: value.number };
+
+		try {
+			const { data } = await goitApi.patch(`/contacts/${id}`, body);
+			return data;
+		} catch (error) {
+			return thunkApi.rejectWithValue(error.message);
+		}
+	}
+);
