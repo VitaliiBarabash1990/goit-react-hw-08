@@ -30,7 +30,6 @@ const App = () => {
 							<PrivateRoute component={<ContactsPage />} redirectTo="/login" />
 						}
 					/>
-					{/* <Route path="contacts" element={<ContactsPage />} /> */}
 					<Route
 						path="login"
 						element={

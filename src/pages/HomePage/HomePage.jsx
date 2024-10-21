@@ -25,7 +25,7 @@ const HomePage = () => {
 							href="https://www.linkedin.com/in/vitalii-barabash/"
 							target="_blank"
 						>
-							vitalii-barabash
+							Vitalii Barabash
 						</a>
 					</div>
 				</div>

@@ -46,14 +46,8 @@ const Contact = ({ ...contact }) => {
 						<BsFillTelephoneFill /> {contact.number}
 					</div>
 				</div>
-				<div className={s.btnGroup}>
-					{/* <button
-						className={s.btnEdit}
-						onClick={() => dispatch(deleteContact(contact.id))}
-					>
-						<MdOutlineModeEditOutline className={s.editBlack} />
-					</button> */}
 
+				<div className={s.btnGroup}>
 					<button className={s.btnEdit} onClick={openModal}>
 						<MdOutlineModeEditOutline className={s.editBlack} />
 					</button>

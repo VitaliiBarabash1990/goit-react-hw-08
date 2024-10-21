@@ -49,7 +49,6 @@ const EditContacts = ({ contact, onClose }) => {
 						className="input input-bordered input-info w-full max-w-xs"
 						type="text"
 						name="name"
-						// placeholder={contact.name}
 						required
 						autoFocus
 					/>
@@ -61,8 +60,6 @@ const EditContacts = ({ contact, onClose }) => {
 						className="input input-bordered input-info w-full max-w-xs"
 						type="tel"
 						name="number"
-						// value={contact.number}
-						// placeholder="Введіть телефон"
 						required
 						autoFocus
 					/>
