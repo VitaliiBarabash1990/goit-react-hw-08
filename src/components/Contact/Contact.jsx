@@ -1,8 +1,8 @@
 import { BsFillPersonFill } from "react-icons/bs";
 import { BsFillTelephoneFill } from "react-icons/bs";
 import s from "./Contact.module.css";
-// import { useDispatch } from "react-redux";
-// import { deleteContact } from "../../redux/contacts/operations";
+import { useDispatch } from "react-redux";
+import { deleteContact } from "../../redux/contacts/operations";
 import { motion } from "framer-motion";
 import { slideInFromBot } from "../motion/motion";
 import { MdDeleteOutline, MdOutlineModeEditOutline } from "react-icons/md";
@@ -10,8 +10,9 @@ import useToggle from "../hooks/useToggle";
 import Modal from "../Modal/Modal";
 import DeleteContacts from "../DeleteContacts/DeleteContacts";
 import EditContacts from "../EditContacts/EditContacts";
+import toast, { Toaster } from "react-hot-toast";
 const Contact = ({ ...contact }) => {
-	// const dispatch = useDispatch();
+	const dispatch = useDispatch();
 
 	const {
 		isOpen,
@@ -21,6 +22,12 @@ const Contact = ({ ...contact }) => {
 		openModalDel,
 		closeModalDel,
 	} = useToggle();
+	const successfuly = () => toast("You have successfully deleted the contact!");
+
+	const handleDelete = () => {
+		dispatch(deleteContact(contact.id));
+		successfuly();
+	};
 
 	return (
 		<>
@@ -61,11 +68,15 @@ const Contact = ({ ...contact }) => {
 					</button>
 					{isOpenDel && (
 						<Modal onClose={closeModalDel}>
-							<DeleteContacts id={contact.id} close={closeModalDel} />
+							<DeleteContacts
+								close={closeModalDel}
+								handleDelete={handleDelete}
+							/>
 						</Modal>
 					)}
 				</div>
 			</motion.li>
+			<Toaster />
 		</>
 	);
 };
