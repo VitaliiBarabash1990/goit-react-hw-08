@@ -43,15 +43,25 @@ const ContactForm = () => {
 			<Form className={s.form}>
 				<label className={s.label}>
 					<span>Name</span>
-					<Field type="text" name="name" placeholder="Введіть ім'я" />
+					<Field
+						className="input input-bordered input-info w-full max-w-xs"
+						type="text"
+						name="name"
+						placeholder="Введіть ім'я"
+					/>
 					<ErrorMessage name="name" component="p" className={s.error} />
 				</label>
 				<label className={s.label}>
 					<span>Number</span>
-					<Field type="tel" name="number" placeholder="Введіть телефон" />
+					<Field
+						className="input input-bordered input-info w-full max-w-xs"
+						type="tel"
+						name="number"
+						placeholder="Введіть телефон"
+					/>
 					<ErrorMessage name="number" component="p" className={s.error} />
 				</label>
-				<button className={s.btn} type="submit">
+				<button className="input-info" type="submit">
 					Add contact
 				</button>
 			</Form>

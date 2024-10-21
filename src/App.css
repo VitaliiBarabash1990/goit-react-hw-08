@@ -20,6 +20,10 @@
 .logo.react:hover {
 	filter: drop-shadow(0 0 2em #61dafbaa);
 }
+.input {
+	background-color: #242424;
+	color: #f9f9f9;
+}
 
 @keyframes logo-spin {
 	from {

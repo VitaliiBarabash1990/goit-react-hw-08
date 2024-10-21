@@ -11,6 +11,7 @@ import { refresh } from "./redux/auth/operations";
 import { selectIsRefreshing } from "./redux/auth/selectors";
 import { PrivateRoute } from "./components/PrivateRoute/PrivateRoute";
 import RestrictedRoute from "./components/RestrictedRoute/RestrictedRoute";
+import { AnimatePresence } from "framer-motion";
 
 const App = () => {
 	const dispatch = useDispatch();
@@ -19,34 +20,39 @@ const App = () => {
 		dispatch(refresh());
 	}, [dispatch]);
 	return isRefreshing ? null : (
-		<Routes>
-			<Route path="/" element={<Layout />}>
-				<Route index element={<HomePage />} />
-				<Route
-					path="contacts"
-					element={
-						<PrivateRoute component={<ContactsPage />} redirectTo="/login" />
-					}
-				/>
-				{/* <Route path="contacts" element={<ContactsPage />} /> */}
-				<Route
-					path="login"
-					element={
-						<RestrictedRoute component={<LoginPage />} redirectTo="/contacts" />
-					}
-				/>
-				<Route
-					path="register"
-					element={
-						<RestrictedRoute
-							component={<RegistrationPage />}
-							redirectTo="/contacts"
-						/>
-					}
-				/>
-			</Route>
-			<Route path="*" element={<NotFound />} />
-		</Routes>
+		<AnimatePresence>
+			<Routes>
+				<Route path="/" element={<Layout />}>
+					<Route index element={<HomePage />} />
+					<Route
+						path="contacts"
+						element={
+							<PrivateRoute component={<ContactsPage />} redirectTo="/login" />
+						}
+					/>
+					{/* <Route path="contacts" element={<ContactsPage />} /> */}
+					<Route
+						path="login"
+						element={
+							<RestrictedRoute
+								component={<LoginPage />}
+								redirectTo="/contacts"
+							/>
+						}
+					/>
+					<Route
+						path="register"
+						element={
+							<RestrictedRoute
+								component={<RegistrationPage />}
+								redirectTo="/contacts"
+							/>
+						}
+					/>
+				</Route>
+				<Route path="*" element={<NotFound />} />
+			</Routes>
+		</AnimatePresence>
 	);
 };
 export default App;

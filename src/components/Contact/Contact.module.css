@@ -3,13 +3,15 @@
 	flex-direction: row;
 	justify-content: space-between;
 	gap: 20px;
-	box-shadow: 0 0 5px 1px #c9bfbf;
+	box-shadow: 0 0 5px 1px #f0d600;
 	padding: 10px;
 	min-width: 300px;
 }
 
 .item {
-	align-content: center;
+	display: flex;
+	align-items: center;
+	gap: 10px;
 }
 
 .listData {
@@ -17,6 +19,21 @@
 	flex-direction: column;
 }
 
+.btnGroup {
+	display: flex;
+	flex-direction: row;
+	gap: 5px;
+}
+
 .btn {
-	box-shadow: 0 0 1px 1px #b3b3b3;
+	background-color: #4a00ff;
+	box-shadow: 0 0 1px 1px #00b3f0;
+	background-color: rgb(255, 0, 0, 0.58);
+}
+.btnEdit {
+	background-color: rgb(255, 247, 0, 0.7);
+}
+
+.editBlack {
+	color: black;
 }

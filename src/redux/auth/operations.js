@@ -10,7 +10,7 @@ const setAuthHeader = (token) => {
 };
 
 export const register = createAsyncThunk(
-	"register",
+	"auth/register",
 	async (credentials, thunkApi) => {
 		try {
 			const { data } = await goitApi.post("users/signup", credentials);
@@ -23,7 +23,7 @@ export const register = createAsyncThunk(
 );
 
 export const login = createAsyncThunk(
-	"login",
+	"auth/login",
 	async (credentials, thunkApi) => {
 		try {
 			const { data } = await goitApi.post("users/login", credentials);
@@ -35,7 +35,7 @@ export const login = createAsyncThunk(
 	}
 );
 
-export const logout = createAsyncThunk("logout", async (_, thunkApi) => {
+export const logout = createAsyncThunk("auth/logout", async (_, thunkApi) => {
 	try {
 		// // 1-variant-plohoy-tak-ne-delat
 		// const token = thunkApi.getState().auth.token;
@@ -55,9 +55,8 @@ export const logout = createAsyncThunk("logout", async (_, thunkApi) => {
 	}
 });
 
-export const refresh = createAsyncThunk("refresh", async (_, thunkApi) => {
+export const refresh = createAsyncThunk("auth/refresh", async (_, thunkApi) => {
 	const savedToken = thunkApi.getState().auth.token;
-	console.log(savedToken);
 
 	if (!savedToken) {
 		return thunkApi.rejectWithValue("Token does not exist!");
